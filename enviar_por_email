@@ -1,0 +1,17 @@
+import smtplib
+from email.message import EmailMessage
+
+def enviar_email(relatorio_pdf, destinatario):
+    msg = EmailMessage()
+    msg['Subject'] = "Relatório Técnico da Obra"
+    msg['From'] = "seuemail@dominio.com"
+    msg['To'] = destinatario
+    msg.set_content("Segue o relatório técnico atualizado da obra.")
+
+    with open(relatorio_pdf, 'rb') as f:
+        dados_pdf = f.read()
+    msg.add_attachment(dados_pdf, maintype='application', subtype='pdf', filename=relatorio_pdf)
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        smtp.login("seuemail@dominio.com", "SENHA")
+        smtp.send_message(msg)

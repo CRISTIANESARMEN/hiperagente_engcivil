@@ -1,0 +1,17 @@
+import matplotlib.pyplot as plt
+
+def gerar_grafico_custos(dados):
+    etapas = [d['Etapa'] for d in dados]
+    custos_prev = [d['Custo Previsto'] for d in dados]
+    custos_real = [d['Custo Realizado'] for d in dados]
+
+    plt.figure(figsize=(10,5))
+    plt.bar(etapas, custos_prev, alpha=0.7, label='Custo Previsto')
+    plt.bar(etapas, custos_real, alpha=0.7, label='Custo Realizado', bottom= custos_prev)
+    plt.xlabel('Etapas')
+    plt.ylabel('Custos (R$)')
+    plt.title('Comparativo de Custos Previsto x Realizado')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig("grafico_custos.png")
+    plt.close()
