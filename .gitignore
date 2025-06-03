@@ -1,0 +1,5 @@
+.env
+*.json
+__pycache__/
+sheets/client_secret_*.json
+
