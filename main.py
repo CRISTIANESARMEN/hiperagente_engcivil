@@ -10,7 +10,7 @@ openai.api_key = "SUA_API_KEY_OPENAI"
 scope = ["https://spreadsheets.google.com/feeds","https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
 client = gspread.authorize(creds)
-sheet = client.open("Dados da Obra").sheet1
+sheet = client.open("hiperagentesengcivil").sheet1
 
 def obter_dados_planilha():
     dados = sheet.get_all_records()
